@@ -21,7 +21,6 @@ function CreateInterview() {
           ...prev, [field]: value 
         }))
 
-        console.log('formData',formData)
     }
     const onGoToNextStep = () => {
         if(!formData?.jobPosition||!formData?.jobDescription||!formData?.interviewDuration||!formData?.type){
