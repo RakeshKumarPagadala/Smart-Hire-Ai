@@ -14,11 +14,12 @@ import { SidebarMenuItem, SidebarMenu } from "@/components/ui/sidebar"
 import { SidebarOptions } from "@/services/Constants.js"
 import Link from 'next/link'  
 import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 
   export function AppSidebar() {
     const path = usePathname()
-
+    const router = useRouter()
     return (
       <Sidebar>
         <SidebarHeader className='bg-gradient-to-br from-teal-100 to-orange-100 flex items-center' >
@@ -27,7 +28,7 @@ import { usePathname } from 'next/navigation'
             className='w-[300px]h-[150px]'
             />
 
-            <Button className='w-full rounded-full mt-2 font-semibold'><Plus/> Create New Interview</Button>
+            <Button onClick={() => router.push('/dashboard/create-interview')} className='w-full rounded-full mt-2 font-semibold'><Plus/> Create New Interview</Button>
         </SidebarHeader>
 
         <SidebarContent>
