@@ -5,10 +5,12 @@ import { Copy, Send,ArrowRight } from 'lucide-react'
 import { toast } from 'sonner'
 import Link from 'next/link'
 import { useUser } from '@/app/provider'
+import { useRouter } from 'next/navigation'
 
 const InterviewCard = ({interview,viewDetail=false}) => {
     const url = process.env.NEXT_PUBLIC_HOST_URL+'/'+interview?.interview_id
     const {user}=useUser()
+    const router=useRouter()
     const onCopyLink = () => {
         navigator.clipboard.writeText(url)
         toast('Link Copied to clipboard')
@@ -30,7 +32,7 @@ const InterviewCard = ({interview,viewDetail=false}) => {
             {!viewDetail ?
             <div className='flex gap-15 mt-2 w-full'>
                 <Button className={'cursor-pointer text-primary'} variant="outline" onClick={onCopyLink}><Copy className='text-primary'/>Copy Link</Button>
-                <Button className={'cursor-pointer w-[120px]'} onClick={onSendLink}><Send/>Send</Button>
+                <Button className={'cursor-pointer'} onClick={onSendLink}><Send/>Send</Button>
             </div>
             :
             <Link href={`/schedule-interview/${interview?.interview_id}/details`}>
