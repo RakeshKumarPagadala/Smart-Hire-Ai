@@ -41,6 +41,13 @@ function QuestionList({formData,onCreateLink}) {
     const onFinish = async () => {
         setSaveLoading(true)
         const interview_id = uuidv4()
+        // Debug: log what will be sent to Supabase
+        console.log('Submitting to Supabase:', {
+          ...formData,
+          questionList,
+          userEmail: user?.email,
+          interview_id
+        });
         const { data, error } = await supabase
             .from('interviews')
             .insert([
@@ -53,7 +60,11 @@ function QuestionList({formData,onCreateLink}) {
         ])
         .select()
         setSaveLoading(false)
-
+        if (error) {
+          console.error('Supabase insert error:', error);
+          toast.error('Supabase error: ' + error.message);
+          return;
+        }
         onCreateLink(interview_id)
     }
 
