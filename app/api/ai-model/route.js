@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { QUESTION_PROMPT } from "@/services/Constants";
 
 export async function POST(req) {
+    // Debug: check if the env variable is present
+    console.log("OPENROUTER_API_KEY:", process.env.OPENROUTER_API_KEY ? "present" : "MISSING");
 
     const {jobPosition,jobDescription,interviewDuration,type} = await req.json()
 
