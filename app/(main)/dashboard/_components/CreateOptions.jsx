@@ -12,12 +12,6 @@ function CreateOptions() {
                 <h2 className='font-bold'>Create New Interview</h2>
                 <p className='text-gray-500'>Create AI interviews and Schedule them with Candidates</p>
             </Link>
-            <Link href='/dashboard/create-phone-screening-call' className='bg-white
-             border border-gray-200 p-4 rounded-lg cursor-pointer'>
-                <Phone className='p-3 text-blue-600 bg-blue-50 rounded-lg w-10 h-10'/>
-                <h2 className='font-bold'>Create Phone Screening Call</h2>
-                <p className='text-gray-500'>Schedule Phone Screening Calls with Candidates</p>
-            </Link>
         </div>
     )
 }
